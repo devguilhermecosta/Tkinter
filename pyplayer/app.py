@@ -4,6 +4,7 @@ from ttkthemes import ThemedTk
 from tkinter.messagebox import showerror, showinfo
 import os
 from pygame import mixer
+from pathlib import Path
 
 
 class PyPlayer:
@@ -11,8 +12,11 @@ class PyPlayer:
     def __init__(self):
         
         # VARIABLES
-        with open('locals.txt', 'r') as loc:
-            self.local = loc.readline()
+        self.parent = Path(__file__)
+        self.local = self.parent.parent / 'musics'
+        with open('locals.txt', 'w') as loc:
+            loc.write(str(self.local))
+
         self.status = True
         
         # LOAD MIXER OF THE PYGAME
@@ -144,7 +148,7 @@ class PyPlayer:
     def play_music(self):
         try:
             if self.status:
-                music = str(self.local + '/' + self.list_box.get(ACTIVE))
+                music = str(self.local / self.list_box.get(ACTIVE))
                 mixer.music.load(music)
                 mixer.music.play()
                 self.button_play.config(image=self.img_pause)
@@ -171,4 +175,5 @@ class PyPlayer:
         self.local = str(directory)
         self.list_musics()
 
-PyPlayer()    
+
+PyPlayer()
