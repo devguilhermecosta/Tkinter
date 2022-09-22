@@ -1,0 +1,1 @@
+/home/guilherme/Documentos/GitHub/tkinter/pyplayer/musics
