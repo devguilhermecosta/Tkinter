@@ -1,1 +1,1 @@
-d:\GitHub\Tkinter\pyplayer\musics
+/home/guilherme/Documentos/GitHub/Tkinter/pyplayer/musics
